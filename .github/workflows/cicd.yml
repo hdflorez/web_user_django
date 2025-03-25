@@ -23,14 +23,17 @@ jobs:
       - name: Instalar dependencias
         run: |
           python -m venv venv
+          echo "ACTIVATING VENV"
           source venv/bin/activate
           pip install --upgrade pip
           pip install -r requirements.txt
+        shell: bash
 
       - name: Aplicar migraciones
         run: |
           source venv/bin/activate
           python manage.py migrate
+        shell: bash
 
       - name: Ejecutar pruebas automatizadas
         run: |
